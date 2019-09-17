@@ -1,22 +1,21 @@
 # cryptocompare-api.project
 
-> Table of crypto currencies. Uses cryptocompare.com api.
+Table of cryptocurrencies sorted by market cap. Uses [https://min-api.cryptocompare.com](https://min-api.cryptocompare.com "https://min-api.cryptocompare.com") API. Autoupdate and infinite scroll ready.
 
-## Build Setup
-
+## Clone first
 ``` bash
-# install dependencies
-$ npm run install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
+git clone git@github.com:megobyte/cryptocompare-api.project.git
+npm i
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## Run local server
+``` bash
+npm run dev
+```
+
+## Production version
+Run
+``` bash
+npm run generate
+```
+and then copy content of the **dist** folder to your ftp
