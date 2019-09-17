@@ -35,14 +35,14 @@ export default {
   components: {},
   data() {
     return {
-      page: 0,
-      last: false,
-      limit: 100,
-      timeout: 2000,
-      loading: false,
-      updating: false,
-      mounted: false,
-      currencies: []
+      page: 0, // max page to load
+      last: false, // if true infinite scroll disabled
+      limit: 100, // coins per page
+      timeout: 2000, // interval to rerun loading
+      loading: false, // is infinite scroll runing
+      updating: false, // is data loading now
+      mounted: false, // check mounted for rerun loading data
+      currencies: [] // loaded coins by page
     }
   },
   computed: {
@@ -54,6 +54,7 @@ export default {
       d = d.filter((el) => {
         return Boolean(el.RAW)
       })
+      // sort coins array beacuse API send it not sorted well
       d.sort(function(a, b) {
         if (!a.RAW) return 0
         if (!b.RAW) return 0
@@ -70,9 +71,13 @@ export default {
     window.addEventListener('scroll', this.isVisibilityChange)
   },
   beforeDestroy() {
+    this.mounted = false
     window.removeEventListener('scroll', this.isVisibilityChange)
   },
   methods: {
+    /**
+     * Load data page by page. run this.loadData(0, 6) to load pages from 0 to 6
+     */
     async loadData(page, to) {
       const path =
         'https://min-api.cryptocompare.com/data/top/mktcapfull?page=' +
@@ -84,6 +89,7 @@ export default {
       const data = response.data.Data
 
       this.$set(this.currencies, page, data)
+      // set last page to disable infinite scroll
       if (
         this.currencies[this.currencies.length - 1].length < this.limit &&
         !this.last
@@ -95,6 +101,7 @@ export default {
         this.updating = false
         this.loading = false
         if (this.mounted)
+          // rerun loading after timeout when all pages loaded
           setTimeout(
             function(that) {
               that.updateData()
