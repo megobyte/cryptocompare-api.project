@@ -60,7 +60,8 @@ export default {
         'Apikey c38ffd4b57ebeab2b5f8c0a12456eec4b2b88154dd54abc24bee6478eaa34923'
       return config
     },
-    responseInterceptor: (res, ctx) => {}
+    responseInterceptor: (res, ctx) => {},
+    credentials: false
   },
   /*
    ** Build configuration
