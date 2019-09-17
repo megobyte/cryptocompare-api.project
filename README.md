@@ -19,3 +19,6 @@ Run
 npm run generate
 ```
 and then copy content of the **dist** folder to your ftp
+
+## Example
+[https://2im.ru](https://2im.ru "https://2im.ru")
