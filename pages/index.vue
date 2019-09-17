@@ -23,8 +23,6 @@
                 span {{cur.CoinInfo.Name}}
               td.price
                 b {{cur.DISPLAY.USD.MKTCAP}}
-                br
-                small {{cur.RAW.USD.MKTCAP}}
               td.price {{cur.DISPLAY.USD.PRICE}}
               td.price.updown(:class="{ up: (cur.RAW.USD.CHANGE24HOUR > 0), down: (cur.RAW.USD.CHANGE24HOUR < 0) }") {{cur.DISPLAY.USD.CHANGE24HOUR}}
               td.price {{cur.DISPLAY.USD.HIGH24HOUR}}
